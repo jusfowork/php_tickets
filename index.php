@@ -170,7 +170,7 @@ function createOrder($event_id, $event_date, $ticket_adult_price, $ticket_adult_
     ];
 
     // Send booking request via API
-    $response = sendPostRequest('http://localhost:3000/book', $orderData);
+    $response = sendPostRequest('https://api.site.com/book', $orderData);
 
     // Check if booking was successful
     if (isset($response['message']) && $response['message'] === 'order successfully booked') {
@@ -183,7 +183,7 @@ function createOrder($event_id, $event_date, $ticket_adult_price, $ticket_adult_
 
 // Function to handle approval of booking
 function approveBooking($barcodes, $adult_ticket_types, $kid_ticket_types, $adult_ticket_prices, $kid_ticket_prices, $ticket_adult_price, $ticket_kid_price) {
-    $approvalResponse = sendPostRequest('http://localhost:3000/approve', ['barcodes' => $barcodes]);
+    $approvalResponse = sendPostRequest('https://api.site.com/approve', ['barcodes' => $barcodes]);
 
     // Check if approval was successful
     if (isset($approvalResponse['message']) && $approvalResponse['message'] === 'order successfully approved') {
